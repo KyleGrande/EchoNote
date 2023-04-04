@@ -1,6 +1,7 @@
 import './App.css';
 import { useWhisper } from '@chengsokdara/use-whisper'
-import {useState} from 'react';
+import {useState, useRef, useEffect} from 'react';
+import ReactMarkdown from 'react-markdown';
 
 const App = () => {
 
@@ -26,8 +27,8 @@ const App = () => {
     },
   })
 
-  const [summary, setSummary] = useState('');
-
+  //const [summary, setSummary] = useState('');  v1
+  const [summary, setSummary] = useState([]);
   const generateNotes = async () => {
     try {
       const response = await fetch("http://localhost:3001/api/summarize", {
@@ -51,18 +52,57 @@ const App = () => {
       console.error("Error generating summary:", error);
     }
   };
+  const [timer, setTimer] = useState(0);
+  const timerRef = useRef(null);
+
+  useEffect(() => {
+    if (recording) {
+      timerRef.current = setInterval(() => {
+        setTimer((prevTimer) => prevTimer + 1);
+      }, 1000);
+    } else {
+      clearInterval(timerRef.current);
+    }
+
+    return () => clearInterval(timerRef.current);
+  }, [recording]);
+
+  const handleStartRecording = () => {
+    if (!recording) {
+      setTimer(0);
+      startRecording();
+      
+    } else {
+      pauseRecording();
+    }
+  };
+
+  const handleStopRecording = () => {
+    stopRecording();
+  };
+  const formatTime = (seconds) => {
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = seconds % 60;
+    return `${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
+  };
+  
 
   return (
     <div className="app">
       <div className="status">
         <div className="status-items">
+        <div className="status-item">
+        <span className="status-label">Timer:</span>
+        <span className="status-value">{formatTime(timer)}</span>
+      </div>
           <div className="status-item">
             <span
               className={`status-icon ${
                 recording ? "status-green" : "status-red"
               }`}
-            ></span>
-            Recording
+            ></span >
+            <span className="status-label">Recording</span>
+            
           </div>
           <div className="status-item">
             <span
@@ -70,7 +110,7 @@ const App = () => {
                 speaking ? "status-green" : "status-red"
               }`}
             ></span>
-            Speaking
+            <span className="status-label">Speaking</span>
           </div>
           <div className="status-item">
             <span
@@ -78,7 +118,9 @@ const App = () => {
                 transcribing ? "status-green" : "status-red"
               }`}
             ></span>
+            <span className="status-label">
             Transcribing
+            </span>
           </div>
         </div>
       </div>
@@ -87,15 +129,14 @@ const App = () => {
         <p>{transcript.text}</p>
       </div>
       <div className="controls">
-        <button className="btn start" onClick={startRecording}>
-          Start
+        <button className="btn start" onClick={handleStartRecording}>
+          {recording ? 'Pause' : 'Start'}
         </button>
-        <button className="btn pause" onClick={pauseRecording}>
-          Pause
-        </button>
-        <button className="btn stop" onClick={stopRecording}>
+        
+        <button className="btn stop" onClick={handleStopRecording}>
           Stop
         </button>
+        
       </div>
       <div className="center">
         <button className="btn generate" onClick={generateNotes}>
@@ -104,7 +145,12 @@ const App = () => {
       </div>
       <div className="notes">
         <h3>Notes:</h3>
-        <div>{summary}</div>
+        <div>
+          {/* {summary} v1 */}
+        {summary.map((note, index) => (
+            <ReactMarkdown key={index}>{note.props.children}</ReactMarkdown>
+          ))}
+        </div>
       </div>
     </div>
   );

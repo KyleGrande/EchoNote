@@ -26,9 +26,9 @@ app.post("/api/summarize", async (req, res) => {
       try {
         response = await openai.createCompletion({
           model: "text-davinci-003",
-          prompt: `If you see something that may be a reference make it its own line and if you see dates do the same\n\nCreate study notes for following text as if it was for a class:\n\n${text}`,
+          prompt: `If you see something that may be a reference make it its own line and bold and if you see dates do the same\n\nCreate study notes for following text as if it was for a class:\n\n${text}`,
           temperature: 0.3,
-          max_tokens: 100,
+          max_tokens: 200,
           top_p: 1,
           frequency_penalty: 0,
           presence_penalty: 0,

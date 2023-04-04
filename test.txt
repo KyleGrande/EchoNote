@@ -1,0 +1,5 @@
+        response = await openai.createChatCompletion({
+          model: "gpt-4",
+          messages: [{role: "system", content: "You are a note taker during a lecture. You take excellent notes in markdown format. You always emphasize dates and deadlines (for assignments and test ect)."},{"role": "user", "content": text}],
+
+        });
