@@ -166,26 +166,27 @@ const generateNotes = async () => {
           </div>
           </div>
           <div className="status-btns">
-          <div className="status-item">
+          <div className="status-item status-btn">
             <button className={recording ? 'pause' : 'start'} onClick={handleStartRecording}>
             {recording ? 'Pause' : 'Start'}
           </button>
           </div>
 
-          <div className="status-item">
+          <div className="status-item status-btn">
           <button className="generate" onClick={generateNotes}>
-            Generate Notes
+            Generate
           </button>
           </div>
-          <div className='status-item'>
+          <div className='status-item status-btn'>
           <button onClick={toggleEditor}>
         {isTextarea ? "Markdown" : "Edit"}
       </button>
       </div>
-
+<div className='status-item status-btn'>
           <button onClick={handleSave}>Save</button>
       {/* <button onClick={handleDelete}>Delete</button> */}
-      <div className="status-item">
+      </div>
+      <div className="status-item status-btn">
 
 <button className="stop" onClick={handleStopRecording}>Stop</button>
 </div>

@@ -190,8 +190,12 @@
 }
 
 .status-btns{
-  background-color: black;
+  /* background-color: black; */
   padding:5px;
+}
+.status-btn{
+  /* shadow */
+
 }
 
 .status-item {
