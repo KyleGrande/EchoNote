@@ -92,6 +92,7 @@ const handleDeleteNote = (index) => {
         notes={notes}
         onSelectNote={handleSelectNote}
         onNewNote={handleNewNote}
+        onDelete={handleDeleteNote}
         showSettings={showSettings} // Pass showSettings
         toggleSettings={toggleSettings} // Pass toggleSettings
         apiKey={apiKey}
@@ -102,7 +103,6 @@ const handleDeleteNote = (index) => {
       <NoteEditor
         note={selectedNote}
         onSave={handleSaveNote}
-        onDelete={handleDeleteNote}
         apiKey={apiKey}
         
       />
