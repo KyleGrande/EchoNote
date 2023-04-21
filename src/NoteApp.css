@@ -1,0 +1,318 @@
+.App {
+    display: flex;
+    height: 100vh;
+    /* background-color: #D1DEDE; */
+  }
+  
+  .note-list {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    background-color: rgb(29, 27, 27);
+    color: white;
+    overflow-y: auto;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 0px 5px 200px 0px;
+    /* make sticky */
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    /* end sticky */
+    }
+  .note-items{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: rgb(29, 27, 27);
+    color: white;
+    overflow-y: scroll;
+    /* padding: 20px; */
+    /* box-sizing: border-box; */
+    /* border-radius: 0px 5px 200px 0px; */
+    /* make sticky */
+    /* position: fixed; */
+    /* top: 0; */
+    /* bottom: 0;
+    left: 0; */
+    /* end sticky */
+    margin-bottom: 40px;
+    min-height: 39%;
+    /* flex-shrink: 1; */
+  }
+  .note-item {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    background-color: #2e2d2d;
+
+  }
+  
+  .note-item button {
+    display: none;
+
+  }
+  
+  .note-item:hover {
+    background-color: #ffffff;
+    color: black;
+    cursor: pointer;
+
+  }
+  
+  .note-item:hover button {
+    all: unset;
+    cursor: pointer;
+    padding: 0px 10px;
+    background-color: none;
+    text-align: center;
+    background-color: white;
+    color: black;
+    border: none;
+    display: block;
+    cursor: pointer;
+  }
+  .note-item button:hover{
+    background-color: #000000;
+    color: white;
+  }
+  
+  
+  .note-editor {
+    width: 76%;
+    padding: 20px;
+    box-sizing: border-box;
+    margin-left: 22%;
+  }
+  
+  .note-editor input {
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    box-sizing: border-box;
+    margin-bottom: 2px;
+  }
+  
+  .note-editor textarea {
+    /* background-color: #D1DEDE; */
+ 
+    width: 100%;
+    height: calc(75% - 82px);
+    padding: 10px;
+    font-size: 16px;
+    box-sizing: border-box;
+    resize: none;
+  }
+  .transcript textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    box-sizing: border-box;
+
+    /* resize: none; */
+  }
+  
+  .note-editor button {
+    /* float: right; */
+    padding: 10px 20px;
+    background-color: black;
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    /* border-radius: 15px; */
+    margin-left: 15px;
+    /* margin-top: 20px; */
+  }
+  
+  .note-editor button:hover {
+    background-color: white;
+    color: black;
+  }
+  .new-note-button{ 
+    justify-content: center;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: white;
+    color: black;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+  }
+
+  .note-echo{
+    font-size: 40px;
+    text-align: center;
+    width: 70%;
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 100px;
+    margin-left: 20%;
+  }
+
+  .new-note-button:hover{
+    cursor: pointer;
+    background-color: #2e2d2d;
+    color: white;
+  }
+  
+.my-note-editor{
+  /* margin-bottom: 50px; */
+}
+  
+  .transcript {
+    width: 100%;
+    /* max-width: 600px; */
+    box-sizing: border-box;
+
+  }
+
+  .status{
+    width: 100%;
+  }
+.status-items, .status-btns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* justify-content: space-around; */
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
+}
+
+.status-btns{
+  background-color: black;
+  padding:5px;
+}
+
+.status-item {
+
+  align-items: center;
+
+}
+  /* Status and button colors */
+  .status-item .start {
+    background-color: #4caf50;
+  }
+  
+  .status-item .pause {
+    background-color: #ff9800;
+  }
+  
+  .status-item .stop {
+    background-color: #f44336;
+  }
+
+
+  
+  .status-item button:hover {
+    background-color: white;
+    color: black;
+  }
+  
+  
+  .status-green {
+    background-color: green;
+  }
+  
+  .status-red {
+    background-color: red;
+  }
+  
+  .status-label {
+    font-weight: bold;
+  }
+  
+  .status-item {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+    
+  }
+  .status-value {
+    border-radius: 50%;
+    display: inline-block;
+    margin-left: 4px;
+  }
+  
+  
+  .status p {
+    font-weight: bold;
+  }
+  
+
+  .status-icon {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 8px;
+  }
+  /*  */
+
+  .note-list {
+    /* ... */
+    /* position: relative;  */
+    /* sticky */
+    
+  }
+  
+  /* .settings-btn {
+    position: absolute;
+    bottom: 10px;
+    left: 20%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    background-color: white;
+    color: black;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 15px;
+  }
+  
+  .settings-btn:hover {
+    background-color: #2e2d2d;
+    color: white;
+  } */
+  .settings-btn {
+    position: absolute;
+    bottom: 10px;
+    padding: 10px 20px;
+    width: 60%;
+    background-color: white;
+    color: black;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 0px 0px 90% 0px;
+    text-align: left;
+
+
+
+  }
+  
+  .settings-btn:hover {
+    background-color: #2e2d2d;
+    color: white;
+  }
+  /* ... */
+
+  .note-item.selected {
+    background-color: white;
+    color: black;
+  }
+  
+
+/* ... */
+
+  /* ... */
