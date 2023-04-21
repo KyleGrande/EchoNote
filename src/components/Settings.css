@@ -29,7 +29,7 @@
 }
 .settings button{
     /* margin-top: 1rem; */
-    margin-bottom: 1rem;
+    margin-bottom: .2rem;
     border-radius: 10px;
     background-color: black;
     color: white;
@@ -52,4 +52,9 @@
     /* border: none; */
     font-size: .8rem;
     margin-bottom: 1rem;
+}
+.safety{
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    text-align: left;
 }
