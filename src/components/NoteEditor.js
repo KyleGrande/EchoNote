@@ -4,7 +4,7 @@ import ReactMarkdown from 'react-markdown';
 import { Configuration, OpenAIApi } from 'openai';
 
 
-const NoteEditor = ({ note, onSave, onDelete, apiKey }) => {
+const NoteEditor = ({ note, onSave, apiKey }) => {
   const {
     recording,
     speaking,
@@ -122,10 +122,6 @@ const generateNotes = async () => {
     onSave({ title, content, note_transcript: transcriptText });
   };
   
-
-  const handleDelete = () => {
-    onDelete();
-  };
 
   if (!note) {
     return <div className="note-echo">Welcome to EchoNote.<br></br> Your AI powered notetaker.</div>;

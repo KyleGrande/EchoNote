@@ -3,7 +3,7 @@ import './NoteApp.css';
 import NoteList from './components/NoteList';
 import NoteEditor from './components/NoteEditor';
 import { saveNotes, loadNotes } from './localStorageUtils';
-import Settings from './components/Settings';
+// import Settings from './components/Settings';
 
 function App() {
   const [notes, setNotes] = useState([]);
@@ -92,7 +92,6 @@ const handleDeleteNote = (index) => {
         notes={notes}
         onSelectNote={handleSelectNote}
         onNewNote={handleNewNote}
-        onDelete={handleDeleteNote}
         showSettings={showSettings} // Pass showSettings
         toggleSettings={toggleSettings} // Pass toggleSettings
         apiKey={apiKey}
