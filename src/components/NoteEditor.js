@@ -164,20 +164,15 @@ const debounce = (func, wait) => {
   };
 };
 
-
-const debouncedGenerateNotes = debounce(generateNotes, 5000); // 5 seconds debounce
-
-useEffect(() => {
-  setTranscriptText(transcript.text);
-  debouncedGenerateNotes();
-}, [transcript.text, debouncedGenerateNotes]);
+const debouncedGenerateNotes = useCallback(debounce(generateNotes, 5000), [transcript.text]); // 5 seconds debounce, added useCallback
 
 useEffect(() => {
   setTranscriptText(transcript.text);
   if (generateNotesEnabled) {
     debouncedGenerateNotes();
   }
-}, [transcript.text, generateNotesEnabled, debouncedGenerateNotes]); // Add debouncedGenerateNotes
+}, [transcript.text, generateNotesEnabled]); // Removed debouncedGenerateNotes from the dependency array
+
 
   const [timer, setTimer] = useState(0);
   const timerRef = useRef(null);
